@@ -15,7 +15,7 @@ export async function POST(req) {
     const headerPayload = await headers()
     const svix_id = headerPayload.get('svix-id')
     const svix_timestamp = headerPayload.get('svix-timestamp')
-    const svix_signature = headerPayload.get('svix - signature')
+    const svix_signature = headerPayload.get('svix-signature')
 
     //if there are no headers, error out
     if (!svix_id || !svix_timestamp || !svix_signature) {
@@ -48,8 +48,8 @@ export async function POST(req) {
     //For this guide, log payload to console
     const { id } = evt.data
     const eventType = evt.type
-    console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
-    console.log('Webhook payload:', body)
+    console.log(`Received webhook with ID ${id} and event type of ${eventType}`);
+    console.log('Webhook payload:', body);
 
     if (eventType === 'user.created') {
         console.log('User created event');
@@ -63,6 +63,6 @@ export async function POST(req) {
         console.log('User deleted event');
     }
 
-    return new Response('Webhook received', { status: 200 })
+    return new Response('Webhook received', { status: 200 });
 
 }
